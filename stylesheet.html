@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link
+      id="linkElement"
+      href="https://fonts.googleapis.com/css2?family=Square+Peg&display=swap"
+      rel="stylesheet"
+    />
+    <style id="styleElement">
+      body { background-color: darkorange; color: white;}
+
+      p {
+        font-size: 15px;
+      }
+
+      span {
+        font-size: 15px;
+      }
+
+      body {
+        padding: 20px;
+      }
+    </style>
+    <title>STYLE SHEET</title>
+  </head>
+
+  <body>
+    <p>리윤트 천재</p>
+  </body>
+  <script>
+
+    console.log("::::: 📝 위 HTML 문서의 DOM 내에 있는 두 가지 Element 노드 생성자 확인 :::::")
+    console.log(document.querySelector('#linkElement').constructor);
+    console.log(document.querySelector('#styleElement').constructor);
+
+    console.log("::::: 📝 스타일 시트와 스타일 시트 내의 CSS규칙을 생성하는 생성자 확인 :::::")
+    console.log(document.querySelector('#linkElement').sheet.constructor);
+    console.log(document.querySelector('#styleElement').sheet.constructor);
+
+    console.log("::::: 📝 DOM 내에 있는 모든 스타일 시트 확인하기 :::::")
+    console.log(document.styleSheets);
+
+    console.log("::::: 📝 DOM 내에 있는 모든 스타일 시트 각 요소 확인하기 :::::")
+    console.log(document.styleSheets[0]);
+    console.log(document.styleSheets[1]);
+
+    console.log("::::: 📝 DOM 내에 있는 element 선택한 후 .sheet 속성으로 접근해 확인하기 :::::")
+    console.log(document.querySelector('#linkElement').sheet);
+    console.log(document.querySelector('#styleElement').sheet);
+
+    console.log("::::: 📝 CSSStyleSheet 의 속성 및 메서드를 확인해보자 :::::")
+    const styleSheet = document.querySelector('#styleElement').sheet;
+    var styleSheetPropertiesIncludeInherited = [];
+    for (var p in styleSheet){
+      styleSheetPropertiesIncludeInherited.push(p);
+    }
+    console.log(styleSheetPropertiesIncludeInherited.sort());
+
+    var styleSheetPropertiesOnlyInherited = [];
+    for (var p in styleSheet){
+      if (!styleSheet.hasOwnProperty(p)){
+        styleSheetPropertiesOnlyInherited.push(p);
+      }
+    };
+    console.log(styleSheetPropertiesOnlyInherited.sort());
+
+    console.log("::::: 💡 같은 태그라고 하더라도 따로 작성하면 분리가 되어있구나 :::::")
+    console.log(styleSheet.cssRules[0].cssText)
+    console.log(styleSheet.cssRules[1].cssText)
+    console.log(styleSheet.cssRules[2].cssText)
+    console.log(styleSheet.cssRules[3].cssText)
+
+    console.log("::::: 📝 cssRules 를 사용해 스타일 시트 내의 CSS 규칙 목록 확인하기 :::::")
+    const styleSheetCssRule = document.querySelector('#styleElement').sheet.cssRules;
+    console.log("styleSheetCssRule", styleSheetCssRule[0]);
+    console.log("cssText", styleSheetCssRule[0].cssText);
+    console.log("parentRule", styleSheetCssRule[0].parentRule);
+    console.log("parentStyleSheet", styleSheetCssRule[0].parentStyleSheet);
+    console.log("selectorText", styleSheetCssRule[0].selectorText);
+    console.log("style", styleSheetCssRule[0].style);
+    console.log("styleMap", styleSheetCssRule[0].styleMap);
+    console.log("type",styleSheetCssRule[0].type);
+
+  </script>
+  </body>
+</html>
